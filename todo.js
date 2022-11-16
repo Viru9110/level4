@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
 const todoList = () => {
-  all = [];
+  let all = [];
   const add = (todoItem) => {
     all.push(todoItem);
   };
@@ -10,30 +9,33 @@ const todoList = () => {
 
   const overdue = () => {
     // Write the date check condition here and return the array of overdue items accordingly.
+    // FILL YOUR CODE HERE
     return all.filter((item) => item.dueDate < formattedDate(new Date()));
   };
 
   const dueToday = () => {
     // Write the date check condition here and return the array of todo items that are due today accordingly.
+    // FILL YOUR CODE HERE
     return all.filter((item) => item.dueDate === formattedDate(new Date()));
   };
 
   const dueLater = () => {
     // Write the date check condition here and return the array of todo items that are due later accordingly.
+    // FILL YOUR CODE HERE
     return all.filter((item) => item.dueDate > formattedDate(new Date()));
   };
 
   const toDisplayableList = (list) => {
-    // Format the To-Do list here, and return the output string as per the format given below.
+    // Format the To-Do list here, and return the output string as per the format given above.
+    // FILL YOUR CODE HERE
     let OUTPUT_STRING = "";
-    list.map((item, index) => {
-      OUTPUT_STRING += `[${item.completed ? "x" : " "}] ${index + 1}. ${
-        item.title
-      } ${item.dueDate === formattedDate(new Date()) ? "" : item.dueDate}\n`;
+    list.forEach((item) => {
+      OUTPUT_STRING += `[${item.completed ? "x" : " "}] ${item.title} ${
+        item.dueDate === formattedDate(new Date()) ? "" : item.dueDate
+      }\n`;
     });
     return OUTPUT_STRING.trim();
   };
-
   return {
     all,
     add,
@@ -45,17 +47,17 @@ const todoList = () => {
   };
 };
 
-const formattedDate = (d) => {
-  return d.toISOString().split("T")[0];
-};
-
-module.exports = todoList;
-
 // ####################################### #
 // DO NOT CHANGE ANYTHING BELOW THIS LINE. #
 // ####################################### #
 
 // const todos = todoList();
+
+const formattedDate = (d) => {
+  return d.toISOString().split("T")[0];
+};
+
+module.exports = todoList;
 
 // var dateToday = new Date()
 // const today = formattedDate(dateToday)
